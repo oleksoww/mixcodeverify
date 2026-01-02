@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 Weryfikacja Discord</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0d0d1f 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .container {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #5865F2, #7289DA);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 40px rgba(88,101,242,0.4);
+            animation: pulse 2s ease infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, #a0a0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            color: #8888aa;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .server-name { color: #5865F2; font-weight: bold; }
+        .features {
+            background: rgba(88,101,242,0.1);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: left;
+            border: 1px solid rgba(88,101,242,0.2);
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #ccccee;
+        }
+        .feature:last-child { margin-bottom: 0; }
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(88,101,242,0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        .feature-text strong { color: white; display: block; margin-bottom: 2px; }
+        .feature-text span { font-size: 13px; color: #8888aa; }
+        .verify-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 50px;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, #5865F2, #4752C4);
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(88,101,242,0.4);
+        }
+        .verify-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(88,101,242,0.5);
+        }
+        .footer {
+            margin-top: 25px;
+            color: #666688;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🛡️</div>
+        <h1>Weryfikacja Discord</h1>
+        <p class="subtitle">
+            Aby uzyskać dostęp do serwera <span class="server-name">Mixcode x S3</span>,<br>
+            musisz autoryzować swoją tożsamość.
+        </p>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🔐</div>
+                <div class="feature-text">
+                    <strong>Bezpieczna weryfikacja</strong>
+                    <span>Autoryzacja przez oficjalne API Discord</span>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💾</div>
+                <div class="feature-text">
+                    <strong>System Backup</strong>
+                    <span>Twoje role zostaną zapisane i przywrócone</span>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-text">
+                    <strong>Szybki proces</strong>
+                    <span>Jedno kliknięcie i gotowe!</span>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#" id="verify-btn" class="verify-btn">
+            🔓 Zweryfikuj przez Discord
+        </a>
+        
+        <p class="footer">Powered by Mixcode x S3</p>
+    </div>
+
+    <script>
+        // ⚠️ ZMIEŃ TE DANE NA SWOJE!
+        const CLIENT_ID = 'TWOJ_CLIENT_ID';
+        const REDIRECT_URI = 'https://oleksoww.github.io/nazwa-repo/callback.html';
+        
+        const oauthUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify%20guilds.join&prompt=consent`;
+        
+        document.getElementById('verify-btn').href = oauthUrl;
+    </script>
+</body>
+</html>
