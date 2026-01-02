@@ -25,10 +25,7 @@
             width: 90%;
             border: 1px solid rgba(255,255,255,0.1);
         }
-        .icon {
-            font-size: 80px;
-            margin-bottom: 25px;
-        }
+        .icon { font-size: 80px; margin-bottom: 25px; }
         .spinner {
             width: 60px;
             height: 60px;
@@ -108,8 +105,8 @@
     </div>
 
     <script>
-        // ⚠️ ZMIEŃ NA ADRES SWOJEGO SERWERA BOTA!
-        const BOT_API_URL = 'http://TWOJ_IP_SERWERA:3000';
+        // ✅ TWÓJ SERWER BOTA
+        const BOT_API_URL = 'http://51.83.6.7:3000';
         
         const loading = document.getElementById('loading');
         const success = document.getElementById('success');
@@ -161,7 +158,7 @@
                     showError('Błąd weryfikacji', data.error || 'Nieznany błąd');
                 }
             } catch (err) {
-                showError('Błąd połączenia', 'Nie można połączyć się z serwerem bota.');
+                showError('Błąd połączenia', 'Nie można połączyć się z serwerem bota. Sprawdź czy bot jest online.');
             }
         }
         
